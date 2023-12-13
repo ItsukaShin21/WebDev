@@ -11,7 +11,6 @@ html {
 body {
     overflow-y: hidden;
     overflow-x: hidden;
-    /* background-image: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%); */
 }
 
 .webBg {
@@ -225,6 +224,89 @@ body {
     border-bottom: 2px solid #000;
     background: #fff;
     color: #000;
+}
+
+.Preferences {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.Preferences h1 {
+    margin-bottom: 2%;
+    font-weight: 1000;
+    font-size: 32px;
+    margin-left: 4%;
+    color: #fff;
+}
+
+.Preferences p {
+    color: #fff;
+    margin-left: 4%;
+    background: linear-gradient(180deg, #000, #00000081);
+    width: 50%;
+    word-wrap: break-word;
+    text-align: justify;
+    padding: 0.5%;
+    border: 2px solid #fff;
+    border-radius: 10px;
+}
+
+.Contact {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.Contact h1 {
+    margin-bottom: 1%;
+    font-weight: 1000;
+    font-size: 32px;
+    color: #fff;
+    margin-left: 3%;
+}
+
+.Contact p {
+    display: flex; /* Add this property */
+    align-items: center; /* Vertically center the content */
+    text-indent: 10px;
+    padding: 0.7%;
+    background: linear-gradient(180deg, #fff, #00000081);
+    width: 40%;
+    border: 3px solid #000;
+    margin-left: 3%;
+    border-radius: 10px;
+    color: #000;
+    margin-bottom: 1%;
+}
+
+.Contact img {
+    height: 24px;
+    width: 24px;
+}
+
+.Contact .socialIcons {
+    display: flex;
+    justify-content: center;
+    margin-left: 3%;
+    background: linear-gradient(180deg, #fff, #00000081);
+    border: 3px solid #000;
+    border-radius: 10px;
+    width: 41.3%;
+}
+
+.Contact .socialIcons img {
+    height: 56px;
+    width: 66px;
+}
+
+.Contact .socialIcons a {
+    margin-right: 5%;
+    padding: 1%;
 }
 
 .success-message {

@@ -12,17 +12,26 @@
 
 </head>
 <body>
+    <img src="{{ asset('images/darksnow.jpg')}}" class="webBg" alt="webBg">
+
     @if(session('success'))
         <div class="success-message">
             {{ session('success') }}
         </div>
     @endif
-    <h2>EDIT CONTENTS</h2>
-
-    <h3>Biographical Information</h3>
 
     <form method="POST" enctype="multipart/form-data" action="{{ route('saveData') }}">
         @csrf
+
+        <div class="navBtns">
+            <a href="{{route('portfolio')}}">BACK</a>
+            <input type="submit" name="formSubmit" id="formSubmit" value="SAVE">
+        </div>
+
+    <div class="bioContainer">
+        <h2>EDIT CONTENTS</h2>
+        <h3>BIOGRAPHIC INFO</h3>
+
         <label>First Name :
             <input type="text" name="first_name" id="first_name" value="{{ $bioData->first_name ?? '' }}">
         </label>
@@ -70,12 +79,10 @@
         <label>Address :
             <input type="text" name="address" id="address" value="{{ $bioData->address ?? '' }}">
         </label>
+    </div>
 
-        <label>Introduction :
-            <textarea name="introduction" id="introduction" cols="20" rows="5">{{ $bioData->introduction ?? '' }}</textarea>
-        </label>
-
-        <h3>Educational Background</h3>
+    <div class="educationContainer">
+        <h3>EDUCATIONAL BACKGROUND</h3>
 
             <label> Elementary :
                 <input type="text" name="elementary" id="elementary" value="{{ $educationData->elementary ?? '' }}">
@@ -92,64 +99,77 @@
             <label>College :
                 <input type="text" name="college" id="college" value="{{ $educationData->college ?? '' }}">
             </label>
+    </div>
 
-            <h3>Skills
-                <button type="button" name="addSkill" id="addSkill">Add</button>
-            </h3>
-            
-            <div id="skillsContainer">
-                @if(isset($skillsData) && count($skillsData) > 0)
-                    @foreach($skillsData as $key => $skill)
-                        <div class="skillEntry">
-                            <label>Skills:
-                                <input type="hidden" name="skill_ID[]" value="{{ $skill->id }}">
-                                <input type="text" name="skill[]" class="skill" value="{{ $skill->skill_name }}">
-                            </label>
-                            <label>Level :
-                                <select name="skillLevel[]" class="skillLevel">
-                                    @for ($i = 0; $i <= 10; $i++)
-                                        <option value="{{ $i }}" {{ $i == $skill->skill_level ? 'selected' : '' }}>{{ $i }}</option>
-                                    @endfor
-                                </select>
-                            </label>
-                            <button type="button" class="deleteSkill" data-skill-id="{{ $skill->id }}">DELETE</button>
-                        </div>
-                    @endforeach
-                @else
-                    <div class="skillEntry" id="skillEntry">
-                        <label>Skills:
-                            <input type="hidden" name="skill_ID[]" class="skill_ID" value="">
-                            <input type="text" name="skill[]" class="skill">
+    <div class="skillsContainer">
+        <h3>SKILLS
+            <button type="button" name="addSkill" class="addSkill" id="addSkill">ADD</button>
+        </h3>
+        
+        <div id="skillsContainer">
+            @if(isset($skillsData) && count($skillsData) > 0)
+                @foreach($skillsData as $key => $skill)
+                    <div class="skillEntry">
+                        <label>Skill :
+                            <input type="hidden" name="skill_ID[]" value="{{ $skill->id }}">
+                            <input type="text" name="skill[]" class="skill" value="{{ $skill->skill_name }}">
                         </label>
                         <label>Level :
                             <select name="skillLevel[]" class="skillLevel">
                                 @for ($i = 0; $i <= 10; $i++)
-                                    <option value="{{ $i }}">{{ $i }}</option>
+                                    <option value="{{ $i }}" {{ $i == $skill->skill_level ? 'selected' : '' }}>{{ $i }}</option>
                                 @endfor
                             </select>
                         </label>
-                        <button type="button" class="deleteSkill" data-skill-id="">DELETE</button>
+                        <button type="button" class="deleteSkill" data-skill-id="{{ $skill->id }}">DELETE</button>
                     </div>
-                @endif
-            </div>            
+                @endforeach
+            @else
+                <div class="skillEntry" id="skillEntry">
+                    <label>Skills:
+                        <input type="hidden" name="skill_ID[]" class="skill_ID" value="">
+                        <input type="text" name="skill[]" class="skill">
+                    </label>
+                    <label>Level :
+                        <select name="skillLevel[]" class="skillLevel">
+                            @for ($i = 0; $i <= 10; $i++)
+                                <option value="{{ $i }}">{{ $i }}</option>
+                            @endfor
+                        </select>
+                    </label>
+                    <button type="button" class="deleteSkill" data-skill-id="">DELETE</button>
+                </div>
+            @endif
+        </div>
+    </div>            
 
-    <h3>Hobbies</h3>
+    <div class="preferenceContainer">
 
-        <label>Hobbies :
-            <textarea name="hobbies" id="hobbies" cols="30" rows="5">{{ $bioData->hobbies }}</textarea>
-        </label>
+        <h3>HOBBIES, LIKES AND DISLIKES</h3>
 
-    <h3>Likes and Dislikes</h3>
+        <div class="hldinputs">
+            <label>Hobbies :
+                <textarea name="hobbies" id="hobbies" cols="145" rows="5">{{ $bioData->hobbies }}</textarea>
+            </label>
+        </div>
 
-        <label>Likes :
-            <textarea name="likes" id="likes" cols="30" rows="5">{{ $bioData->likes }}</textarea>
-        </label>
+        <div class="hldinputs">
+            <label>Likes :
+                <textarea name="likes" id="likes" cols="145" rows="5">{{ $bioData->likes }}</textarea>
+            </label>
+        </div>
 
-        <label>Dislikes :
-            <textarea name="dislikes" id="dislikes" cols="30" rows="5">{{ $bioData->dislikes }}</textarea>
-        </label>
+        <div class="hldinputs">
+            <label>Dislikes :
+                <textarea name="dislikes" id="dislikes" cols="145" rows="5">{{ $bioData->dislikes }}</textarea>
+            </label>
+        </div>
 
-    <h3>Links</h3>
+    </div>
+
+    <div class="linksContainer">
+
+        <h3>LINKS</h3>
 
         <label>Facebook :
             <input type="text" name="facebook_link" id="facebook_link" value="{{ $linksData->facebook_link ?? '' }}">
@@ -167,9 +187,14 @@
             <input type="text" name="telegram_link" id="telegram_link" value="{{ $linksData->telegram_link ?? '' }}">
         </label>
 
-        <input type="submit" name="formSubmit" id="formSubmit" value="SAVE">
+    </div>
+
+    <div class="introduction">
+        <h3>INTRODUCTION</h3>
+        <textarea name="introduction" id="introduction" cols="20" rows="6">{{ $bioData->introduction ?? '' }}</textarea>
+    </div>
+
     </form>
     
-        <a href="{{route('portfolio')}}">GO BACK</a>
 </body>
 </html>

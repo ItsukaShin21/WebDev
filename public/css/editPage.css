@@ -1,11 +1,346 @@
+html {
+    scroll-behavior: smooth;
+}
+
 * {
     margin: 0%;
     padding: 0%;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+body {
+    scrollbar-width: thin; /* Firefox support */
+    scrollbar-color: #000 #f1f1f1; /* Firefox support */
+    
+    /* WebKit-based browsers (Chrome, Safari) */
+    &::-webkit-scrollbar {
+        width: 12px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: #000;
+        border-radius: 10px;
+    }
+
+    &::-webkit-scrollbar-track {
+        background-color: #f1f1f1;
+        border-radius: 10px;
+    }
+
+    &::-webkit-scrollbar-thumb:horizontal {
+        background-color: #888;
+    }
+
+    &::-webkit-scrollbar-track:horizontal {
+        background-color: #f1f1f1;
+    }
+}
+
+.webBg {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-attachment: fixed;
+    z-index: -1;
+}
+
+.navBtns {
+    display: flex;
+    float: inline-end;
+}
+
+.navBtns a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 700;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 20px;
+}
+
+.navBtns input {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 700;
+    color: #fff;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 20px;
+}
+
+.navBtns a,
+.navBtns input:hover {
+    transition: background 0.3s ease, color 0.3s ease, font-size 0.3s ease;
+}
+
+.navBtns a:hover, .navBtns input:hover {
+    background: #fff;
+    color: #000;
+    font-size: 20px;
+}
+
+.bioContainer, .educationContainer, 
+.skillsContainer, .preferenceContainer,
+.linksContainer, .introduction {
+    background: linear-gradient(180deg, #000, #00000081);
+    border: 3px solid #fff;
+    border-radius: 10px;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    margin-left: 10%;
+}
+
+.bioContainer {
+    margin-top: 3%;
+}
+
+.bioContainer label {
+    color: #fff;
+    margin-left: 4%;
+    margin-bottom: 1%;
+}
+
+.bioContainer label,
+.bioContainer input,
+.bioContainer select {
+    margin-top: 1%;
+}
+
+.bioContainer input,
+.bioContainer select {
+    height: 24px;
+    width: 30%;
+    margin-left: 4%;
+    border-radius: 20px;
+    border: none;
+    text-indent: 10px;
+}
+
+.bioContainer label, .bioContainer input {
+    margin-top: 1%;
+    margin-bottom: 1%;
+}
+
+.bioContainer h2 {
+    margin-top: 1%;
+}
+
+.bioContainer h3 {
+    margin-top: 1%;
+}
+
+.bioContainer h2, h3 {
+    color: #fff;
+    margin-left: 4%;
+}
+
+.bioContainer input:nth-child(-n+10) {
+    height: 24px;
+    width: 30%;
+}
+
+.bioContainer img {
+    width: 70%;
+    height: 420px;
+    border: 3px solid #000;
+    border-radius: 10px;
+}
+
+.educationContainer {
+    margin-top: 1%;
+}
+
+.educationContainer h3 {
+    margin-top: 1%;
+}
+
+.educationContainer input:nth-child(-n+4) {
+    height: 24px;
+    width: 30%;
+    margin-left: 4%;
+    border-radius: 20px;
+    border: none;
+    text-indent: 10px;
+}
+
+.educationContainer label {
+    color: #fff;
+    margin-left: 4%;
+}
+
+.educationContainer label, .educationContainer input {
+    margin-top: 1%;
+    margin-bottom: 1%;
+}
+
+.skillsContainer {
+    margin-top: 1%;
+    height: 350px;
+    overflow-y: auto;
+
+    scrollbar-width: thin; /* Firefox support */
+    scrollbar-color: #000 #f1f1f1; /* Firefox support */
+    
+    /* WebKit-based browsers (Chrome, Safari) */
+    &::-webkit-scrollbar {
+        width: 12px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: #000;
+        border-radius: 10px;
+    }
+
+    &::-webkit-scrollbar-track {
+        background-color: #f1f1f1;
+        border-radius: 10px;
+    }
+
+    &::-webkit-scrollbar-thumb:horizontal {
+        background-color: #888;
+    }
+
+    &::-webkit-scrollbar-track:horizontal {
+        background-color: #f1f1f1;
+    }
+}
+
+.skillsContainer h3 {
+    margin-top: 1%;
+}
+
+.skillsContainer label {
+    color: #fff;
+    margin-left: 4%;
+}
+
+.skillsContainer label, .skillsContainer input {
+    margin-top: 1%;
+    margin-bottom: 1%;
+}
+
+.skillsContainer input, .skillsContainer select {
+    height: 24px;
+    width: 25%;
+    margin-left: 4%;
+    border-radius: 20px;
+    border: none;
+    text-indent: 10px;
+}
+
+.skillsContainer select {
+    width: 8%;
+}
+
+.skillsContainer .deleteSkill {
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    font-size: 16px;
+    color: #fff;
+    margin-left: 16px;
+    font-weight: 500;
+}
+
+.skillsContainer .addSkill {
+    border: none;
+    background: transparent;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 700;
+    cursor: pointer;
+    position: absolute;
+    margin: 23% 0% 0% 65%;
+}
+
+.preferenceContainer {
+    margin-top: 1%;
+    height: 520px;
+    display: flex;
+
+}
+
+.preferenceContainer h3 {
+    margin-top: 1%;
+}
+
+.preferenceContainer textarea {
+    margin-left: 0.5%;
+    border-radius: 20px;
+    border: none;
+    text-indent: 10px;
+    resize: none;
+    padding: 10px;
+}
+
+.preferenceContainer label {
+    margin-left: 4%;
+    color: #fff;
+}
+
+.preferenceContainer label:nth-child(1), 
+.preferenceContainer textarea:nth-child(1) {
+    margin-top: 1%;
+}
+
+.hldinputs {
+    display: flex;
+}
+
+.linksContainer {
+    margin-top: 1%;
+}
+
+.linksContainer h3 {
+    margin-top: 1%;
+}
+
+.linksContainer label, .linksContainer input {
+    margin-top: 1%;
+    margin-bottom: 1%;
+}
+
+.linksContainer label {
+    color: #fff;
+    margin-left: 4%;
+}
+
+.linksContainer input {
+    height: 24px;
+    width: 30%;
+    margin-left: 4%;
+    border-radius: 20px;
+    border: none;
+    text-indent: 10px;
+}
+
+.introduction {
+    margin-top: 1%;
+    margin-bottom: 3%;
+    height: 200px;
+}
+
+.introduction h3 {
+    margin-top: 1%;
+}
+
+.introduction textarea {
+    margin-top: 1%;
+    margin-left: 4%;
+    border-radius: 20px;
+    border: none;
+    text-indent: 10px;
+    resize: none;
+    padding: 10px;
+    width: 90%;
 }
 
 .success-message {
-    background: #02fed4;
+    background: linear-gradient(180deg, #000, #00000081);;
     width: 40%;
     height: 10%;
     position: absolute;
@@ -14,4 +349,7 @@
     align-items: center;
     left: 50%;
     transform: translate(-50%);
+    border: 3px solid #fff;
+    color: #fff;
+    border-radius: 10px;
 }

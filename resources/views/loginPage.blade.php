@@ -9,26 +9,31 @@
     <script src="{{ asset('javascript/script.js') }}"></script>
     <title>Login</title>
 </head>
-<body>
-
+<body>    
     @if(isset($error))
     <p class="error-message">{{ $error }}</p>
     @endif
 
-    <h3>LOGIN</h3>
-
-    <form method="POST">
-        @csrf
-        <label>Username :
+    <div class="loginContainer">
+        <form method="POST">
+            @csrf
+        <div class="form-group">
+            <p>Username :</p>
             <input type="text" name="name" id="name" required>
-        </label>
-    
-        <label>Password :
+        </div>
+
+        <div class="form-group">
+            <p>Password :</p>
             <input type="password" name="password" id="password" required>
-        </label>
-    
-        <input type="submit" name="loginBtn" id="loginBtn" value="LOGIN">
-        <a href="{{route('portfolio')}}">GO BACK</a>
-    </form>
+        </div>
+
+        <div>
+            <input type="submit" name="loginBtn" id="loginBtn" value="LOGIN">
+            <a href="{{route('portfolio')}}">BACK</a>
+        </div>
+        </form>
+    </div>
+
+    <img class="webBg" src="{{ asset('images/darksnow.jpg')}}" alt="webBg">
 </body>
 </html>

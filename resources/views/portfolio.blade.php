@@ -22,8 +22,8 @@
             <a href="#Home">HOME</a>
             <a href="#Bio">BIO</a>
             <a href="#Skills">SKILLS</a>
-            <a href="">PREFERENCE</a>
-            <a href="">CONTACT</a>
+            <a href="#Preferences">PREFERENCES</a>
+            <a href="#Contact">CONTACT</a>
         </div>
 
         <div class="navigators2">
@@ -76,7 +76,7 @@
                         {{ $skill->skill_name }}
                     </p>
                     <p class="secondP">
-                        {{ $skill->skill_level }}
+                        {{ $skill->skill_level }}/10
                     </p>
                 @endforeach
             </div>
@@ -84,8 +84,47 @@
         </div>
 
     </div>
-    <div class="Preference"></div>
-    <div class="Contact"></div>
+
+    <div class="Preferences" id="Preferences">
+
+        <h1>LIKES</h1>
+        <p>{{ $bioData->likes }}</p>
+        <h1>DISLIKES</h1>
+        <p>{{ $bioData->dislikes }}</p>
+        <h1>HOBBIES</h1>
+        <p>{{ $bioData->hobbies }}</p>
+
+    </div>
+
+    <div class="Contact" id="Contact">
+        <h1>WANT TO MEET OR CALL ME?</h1>
+        <p>
+            <img src="{{ asset('images/call-icon.png')}}" alt="Contact Icon"> 
+            {{ $bioData->contact_info }}
+        </p>
+        <p>
+            <img src="{{ asset('images/email-icon.png')}}" alt="Email Icon">
+            {{ $bioData->email }}
+        </p>
+
+        <h1>FOLLOW ME AT</h1>
+
+        <div class="socialIcons">
+            <a href="{{ $linksData->facebook_link }}" target="_blank">
+                <img src="{{ asset('images/fb-icon.png') }}" alt="Facebook Icon">
+            </a>
+            <a href="{{ $linksData->instagram_link }}" target="_blank">
+                <img src="{{ asset('images/instagram-icon.png') }}" alt="Instargarm Icon">
+            </a>
+            <a href="{{ $linksData->linkedin_link }}" target="_blank">
+                <img src="{{ asset('images/linkedIn-icon.png') }}" alt="LinkedIn Icon">
+            </a>
+            <a href="{{ $linksData->telegram_link }}" target="_blank">
+                <img src="{{ asset('images/telegram-icon.png') }}" alt="Telegram Icon">
+            </a>
+        </div>
+
+    </div>
 
     <div class = "profilePic">
         @if($bioData && $bioData->picture)
@@ -93,32 +132,5 @@
         @endif
     </div>
 
-    <div class = "educationalBg">
-        <h3>Educational Background</h3>
-    </div>
-
-    <div class = "skills">
-        <h3>Skills</h3>
-    </div>
-
-    <div class = "hobbies">
-        <h3>Hobbies</h3>
-    </div>
-
-    <div class = "likes">
-        <h3>Likes</h3>
-    </div>
-
-    <div class = "dislikes">
-        <h3>Dislikes</h3>
-    </div>
-
-    <div class = "contactInfo">
-        <h3>Contact Info</h3>
-    </div>
-
-    <div class = "links">
-        <h3>Social Media Links</h3>
-    </div>
 </body>
 </html>
